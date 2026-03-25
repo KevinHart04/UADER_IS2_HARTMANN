@@ -26,20 +26,71 @@ if len(sys.argv) < 2:
     print("[x] Tenés que ingresar un número como argumento")
     sys.exit()
 
-try:
-    num = int(sys.argv[1])
+
+arg = sys.argv[1]
 
 
-    if num < 0:
-        print("Factorial de un número negativo no existe")
+# Comprobación de que el argumento no es solo un guión
+if arg == "-":
+    print("[x] Tenés que ingresar un número después del guión")
+    sys.exit(1)
+
+
+#lógica para leer -hasta
+if arg.startswith("-"):
+    try:
+        num = int(arg[1:])
+        if num <= 0:
+            print("Debe informar un número entero positivo después del guión")
+            sys.exit(1)
+        
+        inicio = 1
+        fin = num
+        
+        for i in range(inicio, fin + 1):
+            factorial_result = factorial(i)
+            print(f"[-] Factorial de {i} = {factorial_result}")
+        
         sys.exit()
+        
+    except ValueError:
+        print("Debe informar un número entero válido")
+        sys.exit(1)
 
-    if not (4 <= num <= 8):
-        print("Número fuera de rango, debe ser entre 4 y 8")
+
+
+
+# Lógica para leer -desde
+
+elif arg.endswith("-"):
+    try:
+        num = int(arg[:-1])
+        if num <= 0:
+            print("Debe informar un número entero positivo antes del guión")
+            sys.exit(1)
+            
+        inicio = num
+        fin = 60
+        
+        for i in range(inicio, fin + 1):
+            factorial_result = factorial(i)
+            print(f"[-] Factorial de {i} = {factorial_result}")
+            
         sys.exit()
-    factorial_result = factorial(num)
-    print("Factorial de", num, "es", factorial_result)
+        
+    except ValueError:
+        print("Debe informar un número entero válido")
+        sys.exit(1)
 
-except ValueError:
-    print("Debe informar un número entero válido")
+# Caso donde se ingresa un número sin guiones
+else:
+    try:
+        num = int(arg)
+        factorial_result = factorial(num)
+        print(f"[-] Factorial de {num} = {factorial_result}")
+    except ValueError:
+        print("Debe informar un número entero válido")
+        sys.exit(1)
+
+
 
