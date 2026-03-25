@@ -14,3 +14,9 @@ for num in range(lower, upper + 1):
                break
        else:
            print(num)
+
+
+
+# Comentario creado para el trabajo práctico de IS2.
+
+
