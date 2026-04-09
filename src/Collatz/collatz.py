@@ -19,7 +19,7 @@ def collatz(n):
 valores_n = []
 iteraciones = []
 
-for i in range(1, 10000000):     # tardó pero se pudo
+for i in range(1, 100000):     # tardó pero se pudo
     
     pasos = collatz(i)
     

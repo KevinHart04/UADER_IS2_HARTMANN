@@ -59,6 +59,30 @@ if arg.startswith("-"):
 
 
 
+# Lógica para leer rango "desde-hasta"
+
+elif arg.count("-") == 1 and not arg.startswith("-") and not arg.endswith("-"):
+    try:
+        inicio_str, fin_str = arg.split("-")
+        inicio = int(inicio_str)
+        fin = int(fin_str)
+
+        if inicio <= 0 or fin <= 0:
+            print("Debe informar números enteros positivos en el rango")
+            sys.exit(1)
+        if inicio > fin:
+            print("El número inicial debe ser menor o igual al final")
+            sys.exit(1)
+        for i in range(inicio, fin + 1):
+            factorial_result = factorial(i)
+            print(f"[-] Factorial de {i} = {factorial_result}")
+
+        sys.exit()
+
+    except ValueError:
+        print("Debe informar un número entero válido para el rango")
+        sys.exit(1)
+
 
 # Lógica para leer -desde
 
